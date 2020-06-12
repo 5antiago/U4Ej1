@@ -9,10 +9,15 @@ class App(tk.Tk):
         self.geometry("310x250")
         self.config(padx=10, pady=20)
         self.resizable(0,0)
+        self.config(background="#DCDAD5")
         self.__altura=tk.DoubleVar()
         self.__peso= tk.DoubleVar()
         self.__imc= tk.StringVar()
         self.__imcstatus= tk.StringVar()
+        styles=ttk.Style()
+        styles.theme_use("clam")
+        styles.configure("C.TButton", background='green')
+        styles.map("C.TButton")
 
         #Creando los elementos
         self.__titulo=ttk.Label(self, text="Calculadora de  IMC", font= font.Font(weight="bold"))
@@ -23,8 +28,8 @@ class App(tk.Tk):
         self.__ealt= ttk.Entry(self, textvariable=self.__altura)
         self.__lbimc=ttk.Label(self, textvariable=self.__imc)
         self.__lblstat=ttk.Label(self, textvariable=self.__imcstatus)
-        self.__btncalc= ttk.Button(self, text="Calcular", command= lambda : self.Calcular(float(self.__epes.get()), float(self.__ealt.get())))
-        self.__btnclean= ttk.Button(self, text="Limpiar", command=self.clean)
+        self.__btncalc= ttk.Button(self, text="Calcular", command= lambda : self.Calcular(float(self.__epes.get()), float(self.__ealt.get())), style="C.TButton")
+        self.__btnclean= ttk.Button(self, text="Limpiar", command=self.clean, style="C.TButton")
 
         #Ubicando los elementos
         self.__titulo.place(anchor=tk.CENTER, relwidth = 0.6, relheight=0.1, relx=0.5)
